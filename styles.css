@@ -1,0 +1,25 @@
+.pokemon-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .pokemon-header h2 {
+    margin: 0;
+    line-height: 1;
+  }
+  
+  .shiny-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  
+  .pokemon-image {
+    display: block;
+    margin: 12px 0;
+  }
+  
