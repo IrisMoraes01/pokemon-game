@@ -1,28 +1,39 @@
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const content = document.getElementById('content');
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const content = document.getElementById("content");
+const toggleSearchButton = document.getElementById("toggleSearchButton");
+const searchBar = document.getElementById("searchBar");
+
+toggleSearchButton.addEventListener("click", () => {
+  if (searchBar.style.display === "none") {
+    searchBar.style.display = "flex";
+    searchInput.focus();
+  } else {
+    searchBar.style.display = "none";
+  }
+});
 
 let totalPokemons = 0;
 
-searchButton.addEventListener('click', fetchPokemon);
+searchButton.addEventListener("click", fetchPokemon);
 
 function fetchPokemon() {
   const query = searchInput.value.toLowerCase().trim();
   if (!query) return;
 
-  content.innerHTML = ''; 
+  content.innerHTML = "";
 
   fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
-        throw new Error('Pokémon não encontrado');
+        throw new Error("Pokémon não encontrado");
       }
       return response.json();
     })
-    .then(pokemonData => {
+    .then((pokemonData) => {
       renderPokemon(pokemonData);
     })
-    .catch(error => {
+    .catch((error) => {
       content.innerHTML = `<p>${error.message}</p>`;
     });
 }
@@ -42,9 +53,8 @@ function renderPokemon(pokemon) {
     <div class="pokemon-header">
       <h2>
         ${pokemonName} (#${pokemon.id})
-        ${
-          hasShiny
-            ? `
+        ${hasShiny
+      ? `
               <button
                 id="shinyToggle"
                 class="shiny-button"
@@ -54,8 +64,8 @@ function renderPokemon(pokemon) {
                 ⭐
               </button>
             `
-            : ''
-        }
+      : ""
+    }
       </h2>
     </div>
 
@@ -69,23 +79,41 @@ function renderPokemon(pokemon) {
     <p><strong>Altura:</strong> ${pokemon.height}</p>
     <p><strong>Peso:</strong> ${pokemon.weight}</p>
 
-    <p><strong>Tipos:</strong>
-      ${pokemon.types.map(type => type.type.name).join(', ')}
+    <p><strong>Tipos:</strong><br>
+  ${pokemon.types
+      .map(
+        (type) =>
+          `<span class="type-badge type-${type.type.name}">
+          ${type.type.name}
+        </span>`
+      )
+      .join("")}
     </p>
 
-    <p><strong>Habilidades:</strong>
-      ${pokemon.abilities.map(ability => ability.ability.name).join(', ')}
-    </p>
+    <p><strong>Habilidades:</strong></p>
+<div class="abilities">
+  ${pokemon.abilities
+    .map(
+      ability => `
+        <span class="ability-badge">
+          ${ability.ability.name.replace('-', ' ')}
+        </span>
+      `
+    )
+    .join('')}
+</div>
+
+
   `;
 
   if (!hasShiny) return;
 
-  const pokemonImage = document.getElementById('pokemonImage');
-  const shinyToggle = document.getElementById('shinyToggle');
+  const pokemonImage = document.getElementById("pokemonImage");
+  const shinyToggle = document.getElementById("shinyToggle");
 
-  shinyToggle.addEventListener('click', () => {
+  shinyToggle.addEventListener("click", () => {
     isShiny = !isShiny;
     pokemonImage.src = isShiny ? shinySprite : normalSprite;
-    shinyToggle.textContent = isShiny ? '↩️' : '✨';
+    shinyToggle.textContent = isShiny ? "↩️" : "✨";
   });
 }

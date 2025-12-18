@@ -1,25 +1,156 @@
-.pokemon-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .pokemon-header h2 {
-    margin: 0;
-    line-height: 1;
-  }
-  
-  .shiny-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    line-height: 1;
-    padding: 0;
-  }
-  
-  .pokemon-image {
-    display: block;
-    margin: 12px 0;
-  }
-  
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #e53935;
+}
+
+/* ===== MENU TOPO ===== */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, #d32f2f, #b71c1c);
+  border-bottom: 4px solid #000;
+}
+
+/* Botões do menu */
+.menu-button {
+  background: white;
+  border: 2px solid #000;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background: #f5f5f5;
+}
+
+/* ===== BARRA DE PESQUISA ===== */
+#searchBar {
+  display: flex;
+  gap: 10px;
+  padding: 14px 18px;
+  background-color: #c62828;
+  border-bottom: 4px solid #000;
+}
+
+#searchBar input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px solid #000;
+  font-size: 14px;
+}
+
+#searchBar button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 2px solid #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== ÁREA PRINCIPAL ===== */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* ===== CARD DO POKÉMON ===== */
+#content {
+  width: 100%;
+  max-width: 420px;
+  background-color: #f5f5f5;
+  border: 4px solid #000;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: inset 0 0 0 4px #ddd;
+}
+
+/* Cabeçalho do Pokémon */
+.pokemon-header h2 {
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+/* Imagem */
+.pokemon-image {
+  display: block;
+  margin: 0 auto 16px;
+  width: 150px;
+  image-rendering: pixelated;
+}
+
+/* Texto */
+#content p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+/* ===== BOTÃO SHINY ===== */
+.shiny-button {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ===== TIPOS ===== */
+.type-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-right: 6px;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #000;
+}
+
+/* Cores por tipo */
+.type-fire { background-color: #f08030; }
+.type-water { background-color: #6890f0; }
+.type-grass { background-color: #78c850; }
+.type-electric { background-color: #f8d030; color: #000; }
+.type-psychic { background-color: #f85888; }
+.type-ice { background-color: #98d8d8; color: #000; }
+.type-dragon { background-color: #7038f8; }
+.type-dark { background-color: #705848; }
+.type-fairy { background-color: #ee99ac; color: #000; }
+.type-normal { background-color: #a8a878; }
+.type-fighting { background-color: #c03028; }
+.type-flying { background-color: #a890f0; }
+.type-poison { background-color: #a040a0; }
+.type-ground { background-color: #e0c068; color: #000; }
+.type-rock { background-color: #b8a038; }
+.type-bug { background-color: #a8b820; }
+.type-ghost { background-color: #705898; }
+.type-steel { background-color: #b8b8d0; color: #000; }
+
+/* ===== HABILIDADES ===== */
+.abilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.ability-badge {
+  background-color: #eeeeee;
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2);
+}

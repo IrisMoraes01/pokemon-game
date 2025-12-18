@@ -3,20 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Pokédex</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
+  <header class="menu">
+    <button id="playButton" class="menu-button">
+      🎮 Jogue agora
+    </button>
+
+    <button id="toggleSearchButton" class="menu-button">
+      🔍 Pesquisar
+    </button>
+  </header>
+
+  <div id="searchBar" style="display: none;">
     <input
       type="text"
       id="searchInput"
       placeholder="Digite o nome ou ID do Pokémon"
     >
     <button id="searchButton">Buscar</button>
-  </header>
+  </div>
 
-  <main id="content"></main>
+  <main>
+    <section id="content"></section>
+  </main>  
 
   <script src="script.js"></script>
 </body>
